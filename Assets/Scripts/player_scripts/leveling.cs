@@ -13,12 +13,35 @@ public class leveling : MonoBehaviour
 {
     public GameObject level_up_box; 
     public TextMeshProUGUI level_ui;
+
+    public TextMeshProUGUI empire_name_1;
+    public TextMeshProUGUI empire_name_2;
+    public TextMeshProUGUI empire_name_3;
+    public TextMeshProUGUI empire_name_4;
+    public TextMeshProUGUI empire_name_5;
+    public TextMeshProUGUI empire_name_6;
+    public TextMeshProUGUI empire_name_7;
+    public TextMeshProUGUI empire_name_8;
+    public TextMeshProUGUI empire_name_9;
+    public TextMeshProUGUI empire_name_10;
     
 
     // Start is called before the first frame update
     void Start()
     {
         //If Level == 1 open up tutorial UI.
+        string user_save_data = Application.persistentDataPath + "/user_data.json";
+        string user_data_string = File.ReadAllText(user_save_data);
+        JObject data_file = JObject.Parse(user_data_string);
+
+        int level = (int)data_file["user_level"];
+        JArray building_array = (JArray)data_file["building_obj"]; 
+        
+        string name = (string)data_file["empire_name"];
+
+        empire_name_1.text = empire_name_2.text = empire_name_3.text = empire_name_4.text = empire_name_5.text = name.ToString();
+        empire_name_6.text = empire_name_7.text = empire_name_8.text = empire_name_9.text = empire_name_10.text = name.ToString();
+
     }
 
 
@@ -186,7 +209,7 @@ public class leveling : MonoBehaviour
                 var d = collect_resources.gears_stored;
 
                 
-                if ((a > 80) && (b > 350) && (c > 1000) && (d > 20)) {
+                if ((a > 79) && (b > 349) && (c > 999) && (d > 19)) {
                     //Level Up!
                     level += 1;
                     level_ui.text = level.ToString();
@@ -326,8 +349,7 @@ public class leveling : MonoBehaviour
                         level += 1;
                         level_ui.text = level.ToString();
                         data_file["user_level"] = level;
-                        
-
+                    
                         level_up_box.SetActive(true);
 
                         //Write Updated Values
@@ -343,6 +365,7 @@ public class leveling : MonoBehaviour
                 //Do Nothing!
                 
                 break;
+                
         }   
             
 

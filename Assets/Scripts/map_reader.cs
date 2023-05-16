@@ -65,8 +65,9 @@ class map_reader : MonoBehaviour
             {
                 //Save File In Resource Path
                 resource_file.Add(file.ToString());
+                
             }
-
+             
             //Loop through the code to select the proper file.
             //Choose the proper data file.
 

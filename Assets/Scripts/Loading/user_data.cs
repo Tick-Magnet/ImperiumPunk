@@ -191,7 +191,6 @@ public class user_data : MonoBehaviour
             //string empire_name = (string)user_data["user_empire"]; Debug.Log(empire_name);
                 
             System.IO.File.WriteAllText(user_save_data, account_string);
-
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
